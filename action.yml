@@ -117,7 +117,6 @@ runs:
         cd ${{ inputs.gh_pages }}
         if git ls-remote --exit-code --heads "https://github.com/${{ github.repository }}.git" "${{ inputs.gh_pages }}"
         then
-            echo "token is ${{ github.token }}"
             echo "REMOTE BRANCH EXISTS"
         else
           git config --local user.email $GIT_USER_EMAIL
@@ -221,8 +220,8 @@ runs:
         #-------------------------------------------------------------------
         if [[ ${ORDER} != 'ascending' ]]; then
           gh release download v1 --skip-existing --repo https://github.com/azope1987/DeployCucumberReport -A zip
-          echo "Second"
           unzip DeployCucumberReport-1.zip
+          echo "unzipped"
           mv DeployCucumberReport-1/*.py ./
           rm -rf DeployCucumberReport-1
           INDEX_SCRIPT_FOLDER=$PWD
@@ -232,6 +231,7 @@ runs:
           INDEX_SCRIPT_PATH=${INDEX_SCRIPT_FOLDER}/index-html-generator-descending-order.py
         fi;
         chmod +x ${INDEX_SCRIPT_PATH}
+        echo "python path is ${INDEX_SCRIPT_PATH}"
         #-------------------------------------------------------------------
         # Check if its external repo push
         if [[ ${EXTERNAL_REPO} != '' ]]; then
