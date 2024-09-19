@@ -270,7 +270,7 @@ runs:
           GH_PAGES_API="https://api.github.com/repos/${{ inputs.external_repository }}/pages"
         fi
         echo "GitHub API is ${GH_PAGES_API}"
-        curl -s -H "Accept: application/vnd.github+json" -H "Authorization: token ${{ inputs.token }}" $GH_PAGES_API > gh-pages.json
+        curl --insecure -s -H "Accept: application/vnd.github+json" -H "Authorization: token ${{ inputs.token }}" $GH_PAGES_API > gh-pages.json
         #-------------------------------------------------------------------
         if [[ ${REPORT_URL} != '' ]]; then
             REPORT_URL="${REPORT_URL}"
@@ -502,7 +502,7 @@ runs:
           repos/${GITHUB_REPOSITORY}/pages > ${GITHUB_WORKSPACE}/gh-pages.json
         GH_SITE_MESSAGE=$(cat ${GITHUB_WORKSPACE}/gh-pages.json | jq '.message' | xargs)
         if [ "${GH_SITE_PRESENT}" == 'Not Found' ]; then
-            curl \
+            curl --insecure \
               -X POST \
               -H "Accept: application/vnd.github+json" \
               -H "Authorization: Bearer ${GITHUB_TOKEN}"\
@@ -536,7 +536,7 @@ runs:
           /repos/${{ inputs.external_repository }}/pages > ${GITHUB_WORKSPACE}/gh-pages.json
         GH_SITE_MESSAGE=$(cat ${GITHUB_WORKSPACE}/gh-pages.json | jq '.message' | xargs)
         if [ "${GH_SITE_PRESENT}" == 'Not Found' ]; then
-            curl \
+            curl --insecure \
               -X POST \
               -H "Accept: application/vnd.github+json" \
               -H "Authorization: Bearer ${GITHUB_TOKEN}"\
