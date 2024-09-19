@@ -270,7 +270,7 @@ runs:
           GH_PAGES_API="https://api.github.com/repos/${{ inputs.external_repository }}/pages"
         fi
         echo "GitHub API is ${GH_PAGES_API}"
-        curl -s -H "Accept: application/vnd.github+json" -H "Authorization: token ${{ inputs.token }} " $GH_PAGES_API > gh-pages.json
+        curl -s -H "Accept: application/vnd.github+json" -H "Authorization: token ${{ inputs.token }}" $GH_PAGES_API > gh-pages.json
         #-------------------------------------------------------------------
         if [[ ${REPORT_URL} != '' ]]; then
             REPORT_URL="${REPORT_URL}"
