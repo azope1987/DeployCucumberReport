@@ -334,7 +334,7 @@ runs:
         }
         #-------------------------------------------------------------------
         generate_index_html_func () {
-          python ${INDEX_SCRIPT_PATH}
+          python3 ${INDEX_SCRIPT_PATH}
           echo "Completed index html generation"
         }
         #-------------------------------------------------------------------
