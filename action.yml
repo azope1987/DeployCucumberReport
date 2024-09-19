@@ -92,6 +92,12 @@ runs:
           echo "GH CLI NOT PRESENT"
         fi;
         echo "GH_CLI_PRESENT=${GH_CLI_PRESENT}" >> $GITHUB_ENV
+    
+    - name: 'Setup jq'
+        uses: dcarbone/install-jq-action@v2
+        with:
+          version: '1.7'
+          force: false
 
     # - name: Install GH CLI
     #   if: ${{ env.GH_CLI_PRESENT == 'false' }}
