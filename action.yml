@@ -277,9 +277,9 @@ runs:
         fi
         echo "GitHub API is ${GH_PAGES_API}"
         curl --insecure -s -H "Accept: application/vnd.github+json" -H "Authorization: token ${{ inputs.token }}" $GH_PAGES_API > gh-pages.json
-        GH_PAGES_DATA = $(cat gh-pages.json)
+        GH_PAGES_DATA=$(cat gh-pages.json)
         echo $GH_PAGES_DATA
-        GH_PAGES_DATA1 = jq . gh-pages.json
+        GH_PAGES_DATA1=$(jq . gh-pages.json)
         echo $GH_PAGES_DATA1
         #-------------------------------------------------------------------
         if [[ ${REPORT_URL} != '' ]]; then
