@@ -277,6 +277,7 @@ runs:
         fi
         echo "GitHub API is ${GH_PAGES_API}"
         curl --insecure -s -H "Accept: application/vnd.github+json" -H "Authorization: token ${{ inputs.token }}" $GH_PAGES_API > gh-pages.json
+        echo jq . gh-pages.json
         #-------------------------------------------------------------------
         if [[ ${REPORT_URL} != '' ]]; then
             REPORT_URL="${REPORT_URL}"
@@ -334,7 +335,7 @@ runs:
         }
         #-------------------------------------------------------------------
         generate_index_html_func () {
-          python -i ${INDEX_SCRIPT_PATH}
+          python ${INDEX_SCRIPT_PATH}
           echo "Completed index html generation"
         }
         #-------------------------------------------------------------------
